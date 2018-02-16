@@ -25,4 +25,5 @@ let save = (id, repoAsJSON) => {
   });
 }
 
+save(12345, '{"test":"repo"}');
 module.exports.save = save;
