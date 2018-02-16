@@ -30,6 +30,10 @@ let save = (repo) => {
     url: repo.html_url,
     description: repo.description
   });
+
+  newRepo.save(function (err, newRepo) {
+    if (err) return console.error(err);
+  })
 }
 
 module.exports.save = save;
