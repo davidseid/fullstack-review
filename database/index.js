@@ -33,7 +33,10 @@ let save = (repo) => {
 
   newRepo.save(function (err, newRepo) {
     if (err) return console.error(err);
+    console.log('saved!');
   })
 }
+
+save({id: 123, name: 'testName', owner: {login: 'testLogin'}, html_url: 'testURL', description: 'testDesc'});
 
 module.exports.save = save;
