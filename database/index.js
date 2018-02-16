@@ -10,20 +10,26 @@ db.once('open', function() {
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
   id: Number,
-  repo: String
+  repo_name: String,
+  user_name: String,
+  url: String,
+  description: String
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (id, repoAsJSON) => {
+let save = (repo) => {
   // TODO: Your code here
   // This function should save a repo or repos to
   // the MongoDB
+
   var newRepo = new Repo({
-    id: id,
-    repo: repoAsJSON
+    id: repo.id,
+    repo_name: repo.name,
+    user_name: repo.owner.login,
+    url: repo.html_url,
+    description: repo.description
   });
 }
 
-save(12345, '{"test":"repo"}');
 module.exports.save = save;
