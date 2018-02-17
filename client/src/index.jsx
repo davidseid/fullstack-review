@@ -13,27 +13,27 @@ class App extends React.Component {
 
   }
 
-  componentDidMount() {
-    // make an ajax get request to /repos
-    $.ajax({
-      url: '/repos',
-      method: "GET",
-      data: {},
-      success: (repos) => {
-        console.log('am i getting back my repos on my client??????')
-        console.log(repos);
-        console.log('this is this: ', this);
-        this.setState({
-          repos: repos
-        });
-      },
-      error: (err) => {
-        console.log('error making get request to /repos');
-      }
-    });
+  // componentDidMount() {
+  //   // make an ajax get request to /repos
+  //   $.ajax({
+  //     url: '/repos',
+  //     method: "GET",
+  //     data: {},
+  //     success: (repos) => {
+  //       console.log('am i getting back my repos on my client??????')
+  //       console.log(repos);
+  //       console.log('this is this: ', this);
+  //       this.setState({
+  //         repos: repos
+  //       });
+  //     },
+  //     error: (err) => {
+  //       console.log('error making get request to /repos');
+  //     }
+  //   });
 
 
-  }
+  // }
 
   search (term) {
     console.log(`${term} was searched`);
@@ -47,11 +47,47 @@ class App extends React.Component {
       success: (data) => {
         console.log('success')
         console.log(data);
+
+        
+        $.ajax({
+          url: '/repos',
+          method: "GET",
+          data: {},
+          success: (repos) => {
+            console.log('am i getting back my repos on my client??????')
+            console.log(repos);
+            console.log('this is this: ', this);
+            this.setState({
+              repos: repos
+            });
+          },
+          error: (err) => {
+            console.log('error making get request to /repos');
+          }
+        });
+
       },
       error: (err) => {
         console.log('error' + err);
       }
     });
+
+    // $.ajax({
+    //   url: '/repos',
+    //   method: "GET",
+    //   data: {},
+    //   success: (repos) => {
+    //     console.log('am i getting back my repos on my client??????')
+    //     console.log(repos);
+    //     console.log('this is this: ', this);
+    //     this.setState({
+    //       repos: repos
+    //     });
+    //   },
+    //   error: (err) => {
+    //     console.log('error making get request to /repos');
+    //   }
+    // });
   }
 
   render () {

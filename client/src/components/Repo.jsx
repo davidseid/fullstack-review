@@ -7,10 +7,7 @@ const Repo = (props) => {
         {props.repoData.id}
       </div>
       <div>
-        {props.repoData.repo_name}
-      </div>
-      <div>
-        {props.repoData.url}
+        <a href={props.repoData.url}>{props.repoData.repo_name}</a>
       </div>
       <div>
         {props.repoData.forks_count}
