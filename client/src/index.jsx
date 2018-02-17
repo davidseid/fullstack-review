@@ -45,26 +45,10 @@ class App extends React.Component {
       data: JSON.stringify({data: term}),
       contentType: 'application/json',
       success: (data) => {
-        console.log('success')
-        console.log(data);
+        console.log('Succesfully posted username repos to the database');
+        console.log('Result from post request is ', data);
+        this.fetchRepos();
 
-        
-        $.ajax({
-          url: '/repos',
-          method: "GET",
-          data: {},
-          success: (repos) => {
-            console.log('am i getting back my repos on my client??????')
-            console.log(repos);
-            console.log('this is this: ', this);
-            this.setState({
-              repos: repos
-            });
-          },
-          error: (err) => {
-            console.log('error making get request to /repos');
-          }
-        });
 
       },
       error: (err) => {
@@ -88,6 +72,25 @@ class App extends React.Component {
     //     console.log('error making get request to /repos');
     //   }
     // });
+  }
+
+  fetchRepos () {
+
+    $.ajax({
+      url: '/repos',
+      method: "GET",
+      data: {},
+      success: (repos) => {
+        console.log('Successfully complete a GET request for top 25 repos from the db');
+        console.log('Result from GET request is ', repos);
+        this.setState({
+          repos: repos
+        });
+      },
+      error: (err) => {
+        console.log('error making get request to /repos');
+      }
+    });
   }
 
   render () {

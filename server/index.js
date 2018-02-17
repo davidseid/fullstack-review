@@ -27,11 +27,14 @@ app.post('/repos', function (req, res, next) {
   //console.log('this is my request body ', req.body);
 
   console.log(req.body.data);
-  getReposByUsername(req.body.data);
+  getReposByUsername(req.body.data, (response) => {
+    res.send('Received your post request');
+    next();
+  });
 
-  // I Should send a proper response here
-  res.send('Received your post request!!');
-  next();
+  // Instead of automatically sending the response, I should wait until the database info is posted
+  // res.send('Received your post request!!');
+  // next();
 });
 
 app.get('/repos', function (req, res) {
