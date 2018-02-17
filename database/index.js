@@ -26,6 +26,8 @@ let save = (repo) => {
 
   // query the database to see if the repo already exists
   // if it does exist, delete it (or overwrite it)
+
+
   Repo.find({id: repo.id}).exec((err, dbRepo) => {
     if (!err) {
       // delete the repo
@@ -33,27 +35,32 @@ let save = (repo) => {
         if (err) {
           console.log('error on removal');
         }
-        console.log('successfully removed a repo');
+        var newRepo = new Repo({
+          id: repo.id,
+          repo_name: repo.name,
+          user_name: repo.owner.login,
+          url: repo.html_url,
+          description: repo.description,
+          forks_count: repo.forks_count
+        });
+
+        newRepo.save(function (err, newRepo) {
+          if (err) return console.error(err);
+          console.log('saved!');
+        })
       });
     }
   })
 
 
-  var newRepo = new Repo({
-    id: repo.id,
-    repo_name: repo.name,
-    user_name: repo.owner.login,
-    url: repo.html_url,
-    description: repo.description,
-    forks_count: repo.forks_count
-  });
 
-  newRepo.save(function (err, newRepo) {
-    if (err) return console.error(err);
-    console.log('saved!');
-  })
+}
+
+let retrieve = () => {
+  console.log('this function will retrieve repos from the database');
 }
 
 //save({id: 123, name: 'testName', owner: {login: 'testLogin'}, html_url: 'testURL', description: 'testDesc'});
 
 module.exports.save = save;
+module.exports.retrieve = retrieve;

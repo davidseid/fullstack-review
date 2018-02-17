@@ -34,6 +34,17 @@ app.post('/repos', function (req, res, next) {
 app.get('/repos', function (req, res, next) {
   // TODO - your code here!
   // This route should send back the top 25 repos
+  
+  // query the database 
+  // send back 
+  console.log(db.retrieve());
+
+  // db.Repo.find().limit(25).exec((err, repos) => {
+  //   if (!err) {
+  //     console.log('here are the repos from the database', repos);
+  //   }
+  // });
+
   next();
 });
 
