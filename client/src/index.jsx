@@ -13,6 +13,23 @@ class App extends React.Component {
 
   }
 
+  componentDidMount() {
+    // make an ajax get request to /repos
+    $.ajax({
+      url: '/repos',
+      method: "GET",
+      data: {},
+      success: (data) => {
+        console.log('successful get request to /repos');
+      },
+      error: (err) => {
+        console.log('error making get request to /repos');
+      }
+    });
+
+
+  }
+
   search (term) {
     console.log(`${term} was searched`);
     // TODO

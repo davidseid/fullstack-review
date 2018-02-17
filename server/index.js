@@ -37,6 +37,7 @@ app.get('/repos', function (req, res, next) {
   
   // query the database 
   // send back 
+  console.log('receiving get request to /repos in the server');
   console.log(db.retrieve());
 
   // db.Repo.find().limit(25).exec((err, repos) => {
@@ -44,7 +45,7 @@ app.get('/repos', function (req, res, next) {
   //     console.log('here are the repos from the database', repos);
   //   }
   // });
-
+  res.send();
   next();
 });
 
