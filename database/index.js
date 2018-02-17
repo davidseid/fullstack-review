@@ -13,7 +13,8 @@ let repoSchema = mongoose.Schema({
   repo_name: String,
   user_name: String,
   url: String,
-  description: String
+  description: String,
+  forks_count: Number
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
@@ -28,7 +29,8 @@ let save = (repo) => {
     repo_name: repo.name,
     user_name: repo.owner.login,
     url: repo.html_url,
-    description: repo.description
+    description: repo.description,
+    forks_count: repo.forks_count
   });
 
   newRepo.save(function (err, newRepo) {
@@ -37,6 +39,6 @@ let save = (repo) => {
   })
 }
 
-save({id: 123, name: 'testName', owner: {login: 'testLogin'}, html_url: 'testURL', description: 'testDesc'});
+//save({id: 123, name: 'testName', owner: {login: 'testLogin'}, html_url: 'testURL', description: 'testDesc'});
 
 module.exports.save = save;
