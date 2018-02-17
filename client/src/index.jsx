@@ -13,27 +13,12 @@ class App extends React.Component {
 
   }
 
-  // componentDidMount() {
-  //   // make an ajax get request to /repos
-  //   $.ajax({
-  //     url: '/repos',
-  //     method: "GET",
-  //     data: {},
-  //     success: (repos) => {
-  //       console.log('am i getting back my repos on my client??????')
-  //       console.log(repos);
-  //       console.log('this is this: ', this);
-  //       this.setState({
-  //         repos: repos
-  //       });
-  //     },
-  //     error: (err) => {
-  //       console.log('error making get request to /repos');
-  //     }
-  //   });
+  componentDidMount() {
+    // make an ajax get request to /repos
+    this.fetchRepos();
 
 
-  // }
+  }
 
   search (term) {
     console.log(`${term} was searched`);
