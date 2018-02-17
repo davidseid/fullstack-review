@@ -1,0 +1,8 @@
+.repo {
+  display: flex;
+  flex-direction: row;
+}
+
+.repo > div {
+  margin: 5px;
+}
