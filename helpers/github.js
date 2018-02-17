@@ -18,19 +18,16 @@ let getReposByUsername = (/* TODO */username) => {
   };
   
   var callback = function (error, response, body) {
-    console.log('error is ' + error);
-    console.log('response is ' + response);
-    console.log('body is ' + body);
+
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
-      console.log('this is a response!!!');
+      console.log(Array.isArray(info));
+
     }
   }
   
   request(options, callback);
 
 }
-
-//getReposByUsername('davidseid');
 
 module.exports.getReposByUsername = getReposByUsername;

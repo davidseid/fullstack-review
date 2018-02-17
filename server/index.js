@@ -26,8 +26,8 @@ app.post('/repos', function (req, res, next) {
   console.log(req.body.data);
   getReposByUsername(req.body.data);
 
-
-  res.send('Received your request!!');
+  // I Should send a proper response here
+  res.send('Received your post request!!');
   next();
 });
 
