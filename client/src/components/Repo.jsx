@@ -12,6 +12,9 @@ const Repo = (props) => {
       <div>
         {props.repoData.url}
       </div>
+      <div>
+        {props.repoData.forks_count}
+      </div>
     </div>
   )
 }

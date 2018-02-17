@@ -58,7 +58,7 @@ let save = (repo) => {
 
 let retrieve = (callback) => {
 
-  Repo.find().limit(25).exec((err, repos) => {
+  Repo.find().limit(25).sort('-forks_count').exec((err, repos) => {
     if (!err) {
       callback(repos);
     }
