@@ -13,7 +13,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.post('/repos', function (req, res, next) {
   // TODO - your code here!
@@ -37,16 +37,11 @@ app.get('/repos', function (req, res, next) {
   // query the database 
   // send back 
   db.retrieve((repos) => {
-    console.log('here im accessing my fetched repos on the server itself', repos);
+    console.log('here im accessing my fetched repos on the server itself');
+    res.send(repos);
+    next();
   })
 
-  // db.Repo.find().limit(25).exec((err, repos) => {
-  //   if (!err) {
-  //     console.log('here are the repos from the database', repos);
-  //   }
-  // });
-  res.send();
-  next();
 });
 
 let port = 1128;

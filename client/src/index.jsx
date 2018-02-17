@@ -19,8 +19,9 @@ class App extends React.Component {
       url: '/repos',
       method: "GET",
       data: {},
-      success: (data) => {
-        console.log('successful get request to /repos');
+      success: (repos) => {
+        console.log('am i getting back my repos on my client??????')
+        console.log(repos);
       },
       error: (err) => {
         console.log('error making get request to /repos');
