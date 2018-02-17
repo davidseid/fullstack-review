@@ -56,8 +56,15 @@ let save = (repo) => {
 
 }
 
-let retrieve = () => {
-  console.log('this function will retrieve repos from the database');
+let retrieve = (callback) => {
+
+  Repo.find().exec((err, repos) => {
+    if (!err) {
+      callback(repos);
+    }
+  })
+
+  // send them back to the 
 }
 
 //save({id: 123, name: 'testName', owner: {login: 'testLogin'}, html_url: 'testURL', description: 'testDesc'});

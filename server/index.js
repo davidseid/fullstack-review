@@ -22,7 +22,6 @@ app.post('/repos', function (req, res, next) {
   // save the repo information in the database
   //console.log('this is my request body ', req.body);
 
-  console.log('here i am trying to get repos by username');
   console.log(req.body.data);
   getReposByUsername(req.body.data);
 
@@ -37,8 +36,9 @@ app.get('/repos', function (req, res, next) {
   
   // query the database 
   // send back 
-  console.log('receiving get request to /repos in the server');
-  console.log(db.retrieve());
+  db.retrieve((repos) => {
+    console.log('here im accessing my fetched repos on the server itself', repos);
+  })
 
   // db.Repo.find().limit(25).exec((err, repos) => {
   //   if (!err) {
