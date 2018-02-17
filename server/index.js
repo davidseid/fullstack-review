@@ -13,7 +13,11 @@ app.use((req, res, next) => {
   next();
 });
 
+console.log('is my server stopping here');
+
 app.use(bodyParser.json());
+
+
 
 app.post('/repos', function (req, res, next) {
   // TODO - your code here!
@@ -30,7 +34,7 @@ app.post('/repos', function (req, res, next) {
   next();
 });
 
-app.get('/repos', function (req, res, next) {
+app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
   
@@ -39,9 +43,7 @@ app.get('/repos', function (req, res, next) {
   db.retrieve((repos) => {
     console.log('here im accessing my fetched repos on the server itself');
     res.send(repos);
-    next();
   })
-
 });
 
 let port = 1128;
