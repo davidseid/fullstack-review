@@ -24,6 +24,10 @@ let save = (repo) => {
   // This function should save a repo or repos to
   // the MongoDB
 
+  // query the database to see if the repo already exists
+  // if it does exist, delete it (or overwrite it)
+
+
   var newRepo = new Repo({
     id: repo.id,
     repo_name: repo.name,

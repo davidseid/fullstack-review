@@ -31,6 +31,6 @@ let getReposByUsername = (/* TODO */username) => {
 
 }
 
-getReposByUsername('davidseid');
+//getReposByUsername('davidseid');
 
 module.exports.getReposByUsername = getReposByUsername;
