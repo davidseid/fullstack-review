@@ -17,39 +17,24 @@ console.log('is my server stopping here');
 
 app.use(bodyParser.json());
 
-
-
 app.post('/repos', function (req, res, next) {
-  // TODO - your code here!
-  // This route should take the github username provided
-  // and get the repo information from the github API, then
-  // save the repo information in the database
-  //console.log('this is my request body ', req.body);
 
   console.log(req.body.data);
   getReposByUsername(req.body.data, (response) => {
     res.send('Received your post request');
     next();
   });
-
-  // Instead of automatically sending the response, I should wait until the database info is posted
-  // res.send('Received your post request!!');
-  // next();
 });
 
 app.get('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should send back the top 25 repos
-  
-  // query the database 
-  // send back 
+
   db.retrieve((repos) => {
     console.log('here im accessing my fetched repos on the server itself');
     res.send(repos);
   })
 });
 
-let port = 1128;
+let port = process.env.PORT || 1128;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

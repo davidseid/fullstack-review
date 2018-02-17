@@ -8,7 +8,6 @@ db.once('open', function() {
 })
 
 let repoSchema = mongoose.Schema({
-  // TODO: your schema here!
   id: Number,
   repo_name: String,
   user_name: String,
@@ -19,18 +18,11 @@ let repoSchema = mongoose.Schema({
 
 let Repo = mongoose.model('Repo', repoSchema);
 
+
+//TOBY RECOMENDS refactoring this to take in multiple and handle that *somehow (hint: Promise.all())*
 let save = (repo) => {
-  // TODO: Your code here
-  // This function should save a repo or repos to
-  // the MongoDB
-
-  // query the database to see if the repo already exists
-  // if it does exist, delete it (or overwrite it)
-
-
   Repo.find({id: repo.id}).exec((err, dbRepo) => {
     if (!err) {
-      // delete the repo
       Repo.remove({id: repo.id}, (err) => {
         if (err) {
           console.log('error on removal');
@@ -64,10 +56,7 @@ let retrieve = (callback) => {
     }
   })
 
-  // send them back to the 
 }
-
-//save({id: 123, name: 'testName', owner: {login: 'testLogin'}, html_url: 'testURL', description: 'testDesc'});
 
 module.exports.save = save;
 module.exports.retrieve = retrieve;
