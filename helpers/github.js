@@ -1,5 +1,6 @@
 const request = require('request');
 const config = require('../config.js');
+const db = require('../database/index.js');
 
 let getReposByUsername = (/* TODO */username) => {
   // TODO - Use the request module to request repos for a specific
@@ -21,7 +22,12 @@ let getReposByUsername = (/* TODO */username) => {
 
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
-      console.log(Array.isArray(info));
+      console.log('the number of repos is ', info.length)
+
+      // go through this array of repos, and for each one, log the id
+      for (var i = 0; i < info.length; i++) {
+        db.save(info[i]);
+      }
 
     }
   }
