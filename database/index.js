@@ -26,6 +26,17 @@ let save = (repo) => {
 
   // query the database to see if the repo already exists
   // if it does exist, delete it (or overwrite it)
+  Repo.find({id: repo.id}).exec((err, dbRepo) => {
+    if (!err) {
+      // delete the repo
+      Repo.remove({id: repo.id}, (err) => {
+        if (err) {
+          console.log('error on removal');
+        }
+        console.log('successfully removed a repo');
+      });
+    }
+  })
 
 
   var newRepo = new Repo({

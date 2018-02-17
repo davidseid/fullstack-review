@@ -24,7 +24,6 @@ let getReposByUsername = (/* TODO */username) => {
       var info = JSON.parse(body);
       console.log('the number of repos is ', info.length)
 
-      // go through this array of repos, and for each one, log the id
       for (var i = 0; i < info.length; i++) {
         db.save(info[i]);
       }
